@@ -94,7 +94,39 @@
 	</head>
 	<body> 
 		<div class="logo"></div>
-		<div class="subtitle">If you don't want to mess your script and see how the event is going</div>
+		<div class="subtitle">
+			If you don't want to mess your script and see how the event is going
+			<div>Language: 
+				<select id="lang" onchange="reload()">
+					<option value="bulgarian">Български</option>
+					<option value="czech">čeština</option>
+					<option value="danish">Dansk</option>
+					<option value="dutch">Nederlands</option>
+					<option value="english" selected="selected">English</option>
+					<option value="finnish">Suomi</option>
+					<option value="french">Français</option>
+					<option value="greek">Ελληνικά</option>
+					<option value="german">Deutsch</option>
+					<option value="hungarian">Magyar</option>
+					<option value="italian">Italiano</option>
+					<option value="japanese">日本語</option>
+					<option value="koreana">한국어</option>
+					<option value="norwegian">Norsk</option>
+					<option value="polish">Polski</option>
+					<option value="portuguese">Português</option>
+					<option value="brazilian">Português-Brasil</option>
+					<option value="russian">Русский</option>
+					<option value="romanian">Română</option>
+					<option value="schinese">简体中文</option>
+					<option value="spanish">Español</option>
+					<option value="swedish">Svenska</option>
+					<option value="tchinese">繁體中文</option>
+					<option value="thai">ไทย</option>
+					<option value="turkish">Türkçe</option>
+					<option value="ukrainian">Українська</option>
+				</select>
+			</div>
+		</div>
 		<div class="content"></div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script>
@@ -156,7 +188,7 @@
 			
 			function reload() {
 				$(".content").html('<div class="loading">Loading...</div>');
-				$.getJSON('https://allorigins.me/get?url=https%3A//community.steam-api.com/ITerritoryControlMinigameService/GetPlanets/v0001/%3Flanguage%3Denglish&callback=?', function(data){
+				$.getJSON('https://allorigins.me/get?url=https%3A//community.steam-api.com/ITerritoryControlMinigameService/GetPlanets/v0001/%3Flanguage%3D'+document.getElementById("lang").options[document.getElementById("lang").selectedIndex].value+'&callback=?', function(data){
 					updateContent(data.contents);
 				});
 			}
